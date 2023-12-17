@@ -44,27 +44,63 @@
 
 
 
-int aсkPeter(int m, int n)
+// int aсkPeter(int m, int n)
+// {
+//     while (m !=0)
+//     {
+//         if (n == 0)
+//         {
+//             n = 1;
+//         }
+//         else
+//         {
+//             n = aсkPeter(m, n-1);
+//         }
+//         m = m-1;
+//     }
+//         return n + 1;
+// }
+
+// Console.Clear();    
+// Console.Write("Введите число m: ");
+// int m = int.Parse(Console.ReadLine()!);
+// Console.Write("Введите число n: ");
+// int n = int.Parse(Console.ReadLine()!);
+// int result = aсkPeter(m, n);
+// Console.WriteLine($"Результат вычисления функции Аккермана = {result}");
+
+/*
+Задача 3: Задайте произвольный массив. Выведете
+его элементы, начиная с конца. Использовать
+рекурсию, не использовать циклы.
+*/
+void InputArray(int[] array)
 {
-    while (m !=0)
+    for(int i = 0; i < array.GetLength(0); i++)
     {
-        if (n == 0)
-        {
-            n = 1;
-        }
-        else
-        {
-            n = aсkPeter(m, n-1);
-        }
-        m = m-1;
+            array[i] = new Random().Next(0, 101); 
     }
-        return n + 1;
 }
 
-Console.Clear();    
-Console.Write("Введите число m: ");
-int m = int.Parse(Console.ReadLine()!);
-Console.Write("Введите число n: ");
+void PrintArray (int [] array, int i)
+{
+         
+    if (i == 0)
+    {
+        Console.Write($"{array[i]}, ");
+        return;
+    }
+        else
+        {
+            Console.Write($"{array[i]}, ");
+            PrintArray(array, i - 1);
+        }
+}
+Console.Clear();
+Console.Write("Введите кол-во элементов массива: ");
 int n = int.Parse(Console.ReadLine()!);
-int result = aсkPeter(m, n);
-Console.WriteLine($"Результат вычисления функции Аккермана = {result}");
+int[] array = new int[n];
+InputArray(array);
+Console.WriteLine($"Начальный массив: [{string.Join(", ", array)}]");
+PrintArray(array, n-1);
+
